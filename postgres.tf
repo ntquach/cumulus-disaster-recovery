@@ -24,7 +24,8 @@ resource "aws_db_instance" "postgresql" {
   maintenance_window         = "Mon:00:00-Mon:03:00"
   #auto_minor_version_upgrade = "${var.auto_minor_version_upgrade}"
   port                       = var.database_port
-  vpc_security_group_ids     = var.ngap_sgs
+  # vpc_security_group_ids     = var.ngap_sgs
+  vpc_security_group_ids     = [aws_security_group.vpc-postgres-ingress-all-egress.id]
   db_subnet_group_name       = aws_db_subnet_group.postgres_subnet_group.id
   # parameter_group_name       = "default.postgres11"
   storage_encrypted          = false
@@ -47,21 +48,21 @@ resource "null_resource" "bootstrap" {
 }
 
 resource "aws_ssm_parameter" "drdb-admin-pass" {
-  name  = "drdb-admin-pass"
+  name  = "${var.prefix}-drdb-admin-pass"
   type  = "SecureString"
   value = "${var.postgres_user_pw}"
   tags = var.default_tags
 }
 
 resource "aws_ssm_parameter" "drdb-user-pass" {
-  name  = "drdb-user-pass"
+  name  = "${var.prefix}-drdb-user-pass"
   type  = "SecureString"
   value = "${var.database_app_user_pw}"
   tags = var.default_tags
 }
 
 resource "aws_ssm_parameter" "drdb-host" {
-  name  = "drdb-host"
+  name  = "${var.prefix}-drdb-host"
   type  = "String"
   value = "${aws_db_instance.postgresql.address}"
   tags = var.default_tags
