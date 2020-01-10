@@ -36,7 +36,6 @@ resource "aws_lambda_function" "db_deploy" {
 
   vpc_config {
     subnet_ids         = var.ngap_subnets
-    # security_group_ids = var.ngap_sgs
     security_group_ids = [aws_security_group.vpc-postgres-ingress-all-egress.id]
   }
 
@@ -63,7 +62,6 @@ resource "aws_lambda_function" "extract_filepaths_for_granule_lambda" {
 
   vpc_config {
     subnet_ids         = var.ngap_subnets
-    # security_group_ids = var.ngap_sgs
     security_group_ids = [aws_security_group.vpc-postgres-ingress-all-egress.id]
   }
 }
@@ -79,7 +77,6 @@ resource "aws_lambda_function" "request_files_lambda" {
 
   vpc_config {
     subnet_ids         = var.ngap_subnets
-    # security_group_ids = var.ngap_sgs
     security_group_ids = [aws_security_group.vpc-postgres-ingress-all-egress.id]
   }
 
@@ -107,7 +104,6 @@ resource "aws_lambda_function" "copy_files_to_archive" {
 
   vpc_config {
     subnet_ids         = var.ngap_subnets
-    # security_group_ids = var.ngap_sgs
     security_group_ids = [aws_security_group.vpc-postgres-ingress-all-egress.id]
   }
 
@@ -133,7 +129,6 @@ resource "aws_lambda_function" "request_status" {
 
   vpc_config {
     subnet_ids         = var.ngap_subnets
-    # security_group_ids = var.ngap_sgs
     security_group_ids = [aws_security_group.vpc-postgres-ingress-all-egress.id]
   }
 
