@@ -181,9 +181,11 @@ DR_REQUEST_LAMBDA_ARN=arn:aws:lambda:us-west-2:012345678912:function:dr_request_
 
 #### Adding a DR module to the Cumulus deployment
 
-We will be adding a `disaster-recovery` module to `cumulus-tf/main.tf`. First, since there isn't a distributed version of the `disaster-recovery` module at the time of writing this documentation, you'll hav e to pull this repository locally.
+We will be adding a `disaster-recovery` module to `cumulus-tf/main.tf`. First, since there isn't a distributed version of the `disaster-recovery` module at the time of writing this documentation, you'll have to clone this repository locally:
 
-Once you have the source files locally, navigate to `main.tf` and delete the `provider "aws"` section - this is not necessary and can cause problems when DR is referenced as a module instead of a stand-alone deployment.
+`git clone git@github.com:podaac/cumulus-disaster-recovery.git`.
+
+Once you have the source files locally, navigate to `main.tf` and delete the `provider "aws"` section - this can cause problems when DR is referenced as a module instead of a stand-alone deployment.
 
 Once that is done, navigate to `cumulus-tf/main.tf` within your Cumulus deployment directory and add the following module:
 ```
@@ -193,21 +195,23 @@ module "disaster-recovery" {
   prefix = var.prefix
   vpc_id = var.vpc_id
 
-  ngap_subnets = var.ngap_db_subnets
-  public_bucket = var.buckets["public"]["name"]
-  glacier_bucket = var.buckets["glacier"]["name"]
-  private_bucket = var.buckets["private"]["name"]
-  internal_bucket = var.buckets["internal"]["name"]
-  protected_bucket = var.buckets["protected"]["name"]
+  ngap_subnets             = var.ngap_db_subnets
+  public_bucket            = var.buckets["public"]["name"]
+  glacier_bucket           = var.buckets["glacier"]["name"]
+  private_bucket           = var.buckets["private"]["name"]
+  internal_bucket          = var.buckets["internal"]["name"]
+  protected_bucket         = var.buckets["protected"]["name"]
   permissions_boundary_arn = var.permissions_boundary_arn
-  postgres_user_pw = var.postgres_user_pw
-  database_name = var.dr_database_name
-  database_app_user = var.dr_database_app_user
-  database_app_user_pw = var.dr_database_app_user_pw
+  postgres_user_pw         = var.postgres_user_pw
+  database_name            = var.dr_database_name
+  database_app_user        = var.dr_database_app_user
+  database_app_user_pw     = var.dr_database_app_user_pw
 }
 ```
 
-#### Add necessary variables to Cumulus TF configuration
+*Note*: This above snippet assumes that you've configured your Cumulus deployment. More information on that process can be found in their [documentation](https://nasa.github.io/cumulus/docs/deployment/deployment-readme#configure-and-deploy-the-cumulus-tf-root-module)
+
+#### Add necessary variables (unique to DR) to the Cumulus TF configuration
 
 To support this module, you'll have to add the following values to your `cumulus-tf/variables.tf` file:
 ```
