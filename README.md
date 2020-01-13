@@ -107,44 +107,45 @@ terraform {
 First, run a `mv terraform.tfvars.example terraform.tfvars` to get a template `terraform.tfvars` in your working directory. This is where you will place input variables to Terraform.
 
 **Necessary:**
-* ngap_subnets - NGAP Subnets (array)
-* glacier_bucket - Bucket with Glacier policy
-* public_bucket - Bucket with public permissions (Cumulus public bucket)
-* private_bucket - Bucket with private permissions (Cumulus private bucket)
-* internal_bucket - Analogous to the Cumulus internal bucket 
-* protected_bucket - Analogous to the Cumulus protected bucket
-* permissions_boundary_arn - Permission Boundary Arn (Policy) for NGAP compliance
-* postgres_user_pw - password for the postgres user
-* database_name - disaster_recovery
-* database_app_user - druser 
-* database_app_user_pw - the password for the application user
+* `ngap_subnets` - NGAP Subnets (array)
+* `vpc_id` - ID of VPC to place resources in - recommended that this be a private VPC (or at least one with restricted access).
+* `glacier_bucket` - Bucket with Glacier policy
+* `public_bucket` - Bucket with public permissions (Cumulus public bucket)
+* `private_bucket` - Bucket with private permissions (Cumulus private bucket)
+* `internal_bucket` - Analogous to the Cumulus internal bucket 
+* `protected_bucket` - Analogous to the Cumulus protected bucket
+* `permissions_boundary_arn` - Permission Boundary Arn (Policy) for NGAP compliance
+* `postgres_user_pw` - password for the postgres user
+* `database_name` - disaster_recovery
+* `database_app_user` - druser 
+* `database_app_user_pw` - the password for the application user
 
 **Optional:**
-* prefix - Prefix that will be pre-pended to resource names created by terraform. 
+* `prefix` - Prefix that will be pre-pended to resource names created by terraform. 
   Defaults to `dr`.
-* profile - AWS CLI Profile (configured via `aws configure`) to use. 
+* `profile` - AWS CLI Profile (configured via `aws configure`) to use. 
   Defaults to `default`.
-* region - Your AWS region. 
+* `region` - Your AWS region. 
   Defaults to `us-west-2`.
-* restore_expire_days - How many days to restore a file for. 
+* `restore_expire_days` - How many days to restore a file for. 
   Defaults to 5.
-* restore_request_retries - How many times to retry a restore request to Glacier. 
+* `restore_request_retries` - How many times to retry a restore request to Glacier. 
   Defaults to 3.
-* restore_retry_sleep_secs - How many seconds to wait between retry calls to `restore_object`. 
+* `restore_retry_sleep_secs` - How many seconds to wait between retry calls to `restore_object`. 
   Defaults to 3.
-* restore_retrieval_type -  the Tier for the restore request. Valid values are 'Standard'|'Bulk'|'Expedited'. 
+* `restore_retrieval_type` -  the Tier for the restore request. Valid values are 'Standard'|'Bulk'|'Expedited'. 
   Defaults to `Standard`. Understand the costs associated with the tiers before modifying.
-* copy_retries - How many times to retry a copy request from the restore location to the archive location. 
+* `copy_retries` - How many times to retry a copy request from the restore location to the archive location. 
   Defaults to 3.
-* copy_retry_sleep_secs - How many seconds to wait between retry calls to `copy_object`. 
+* `copy_retry_sleep_secs` - How many seconds to wait between retry calls to `copy_object`. 
   Defaults to 0.
-* ddl_dir - the location of the ddl dir that contains the sql to create the application database. 
+* `ddl_dir` - the location of the ddl dir that contains the sql to create the application database. 
   Defaults to 'ddl/'.
-* drop_database - Whether or not to drop the database if it exists (True), or keep it (False). 
+* `drop_database` - Whether or not to drop the database if it exists (True), or keep it (False). 
   Defaults to False.
-* database_port - the port for the postgres database. 
+* `database_port` - the port for the postgres database. 
   Defaults to '5432'.
-* platform - indicates if running locally (onprem) or in AWS (AWS). 
+* `platform` - indicates if running locally (onprem) or in AWS (AWS). 
   Defaults to 'AWS'.
 
 ## Deploying with Terraform
