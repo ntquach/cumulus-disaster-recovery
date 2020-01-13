@@ -183,7 +183,7 @@ DR_REQUEST_LAMBDA_ARN=arn:aws:lambda:us-west-2:012345678912:function:dr_request_
 
 We will be adding a `disaster-recovery` module to `cumulus-tf/main.tf`. First, since there isn't a distributed version of the `disaster-recovery` module at the time of writing this documentation, you'll have to clone this repository locally:
 
-`git clone git@github.com:podaac/cumulus-disaster-recovery.git`.
+`https://github.com/podaac/cumulus-disaster-recovery.git`
 
 Once you have the source files locally, navigate to `main.tf` and delete the `provider "aws"` section - this can cause problems when DR is referenced as a module instead of a stand-alone deployment.
 
