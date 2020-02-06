@@ -122,7 +122,6 @@ class TestExtractFilePaths(unittest.TestCase):
             "granuleId": "MOD09GQ.A0219114.N5aUCG.006.0656338553321",
             "files": [
                 {
-                    "name": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                     "fileName": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                     "bucket": "cumulus-test-sandbox-protected-2"
                 }]}]
@@ -141,7 +140,6 @@ class TestExtractFilePaths(unittest.TestCase):
             "granuleId": "MOD09GQ.A0219114.N5aUCG.006.0656338553321",
             "files": [
                 {
-                    "name": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                     "key":
                         "MOD09GQ___006/MOD/MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                     "bucket": "cumulus-test-sandbox-protected-2",
@@ -163,7 +161,6 @@ class TestExtractFilePaths(unittest.TestCase):
             [{"granuleId": "MOD09GQ.A0219114.N5aUCG.006.0656338553321",
               "files": [
                   {
-                      "name": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                       "fileName": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                       "key": "MOD/MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                       "bucket": "cumulus-test-sandbox-protected-2"
@@ -174,7 +171,6 @@ class TestExtractFilePaths(unittest.TestCase):
                  "granuleId": "MOD09GQ.A0219115.N5aUCG.006.0656338553321",
                  "files": [
                      {
-                         "name": "MOD09GQ.A0219115.N5aUCG.006.0656338553321.cmr.xml",
                          "fileName": "MOD09GQ.A0219115.N5aUCG.006.0656338553321.cmr.xml",
                          "key": "MOD/MOD09GQ.A0219115.N5aUCG.006.0656338553321.cmr.xml",
                          "bucket": "cumulus-test-sandbox-protected-2"
