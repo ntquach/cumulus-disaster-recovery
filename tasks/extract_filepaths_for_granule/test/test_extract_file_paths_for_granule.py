@@ -123,6 +123,7 @@ class TestExtractFilePaths(unittest.TestCase):
             "files": [
                 {
                     "name": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
+                    "fileName": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                     "bucket": "cumulus-test-sandbox-protected-2"
                 }]}]
         exp_err = "KeyError: \"event['input']['granules'][]['files']['key']\" is required"
@@ -143,7 +144,8 @@ class TestExtractFilePaths(unittest.TestCase):
                     "name": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                     "key":
                         "MOD09GQ___006/MOD/MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
-                    "bucket": "cumulus-test-sandbox-protected-2"
+                    "bucket": "cumulus-test-sandbox-protected-2",
+                    "fileName": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml"
                 }]}]
         exp_result = {'granules': [
             {'keys': [{'key':'MOD09GQ___006/MOD/MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml',
@@ -162,6 +164,7 @@ class TestExtractFilePaths(unittest.TestCase):
               "files": [
                   {
                       "name": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
+                      "fileName": "MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                       "key": "MOD/MOD09GQ.A0219114.N5aUCG.006.0656338553321.cmr.xml",
                       "bucket": "cumulus-test-sandbox-protected-2"
                   }
@@ -172,6 +175,7 @@ class TestExtractFilePaths(unittest.TestCase):
                  "files": [
                      {
                          "name": "MOD09GQ.A0219115.N5aUCG.006.0656338553321.cmr.xml",
+                         "fileName": "MOD09GQ.A0219115.N5aUCG.006.0656338553321.cmr.xml",
                          "key": "MOD/MOD09GQ.A0219115.N5aUCG.006.0656338553321.cmr.xml",
                          "bucket": "cumulus-test-sandbox-protected-2"
                      }
